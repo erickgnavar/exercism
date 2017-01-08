@@ -1,13 +1,9 @@
-from collections import defaultdict
+from collections import Counter
 import string
 
 
 def word_count(phrase):
-    res = defaultdict(int)
-
     for c in string.punctuation:
         phrase = phrase.replace(c, ' ')
 
-    for word in phrase.lower().split():
-        res[word] += 1
-    return res
+    return dict(Counter(phrase.lower().split()))
