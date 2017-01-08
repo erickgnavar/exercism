@@ -1,9 +1,10 @@
 from collections import Counter
-import string
 
 
 def word_count(phrase):
-    for c in string.punctuation:
-        phrase = phrase.replace(c, ' ')
+    if isinstance(phrase, bytes):
+        phrase = phrase.decode('utf-8')
 
-    return dict(Counter(phrase.lower().split()))
+    s = ''.join([c if c.isalnum() or c.isspace() else ' ' for c in phrase])
+
+    return dict(Counter(s.lower().split()))
