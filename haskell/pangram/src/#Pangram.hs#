@@ -1,0 +1,12 @@
+module Pangram (isPangram) where
+
+import Data.Char
+
+isPangram :: String -> Bool
+isPangram text
+  | sum' == length ['a'..'z'] = True
+  | otherwise = False
+  where cleaned = map toLower $ filter isLetter text
+        values = map (toNumber . (`elem` cleaned)) ['a'..'z']
+        toNumber x = if x == True then 1 else 0
+        sum' = sum $ map toNumber values
