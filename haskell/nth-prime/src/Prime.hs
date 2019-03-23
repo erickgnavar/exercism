@@ -1,10 +1,13 @@
+{-# OPTIONS_GHC -fno-warn-type-defaults #-}
 module Prime (nth) where
 
 factors :: Int -> [Int]
-factors n = [x | x <- [1..n], n `mod` x == 0]
+factors n =
+  [x | x <- [1..limit], n `mod` x == 0]
+  where limit = floor $ sqrt $ fromIntegral n
 
 isPrime :: Int -> Bool
-isPrime n = factors n == [1, n]
+isPrime n = factors n == [1]
 
 nth :: Int -> Maybe Integer
 nth n
