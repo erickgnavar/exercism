@@ -237,4 +237,7 @@ doc/api/
 *.js.deps
 *.js.map
 
+# clojure
+.cpcache
+
 # End of https://www.gitignore.io/api/macos,erlang
